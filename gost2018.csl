@@ -1,0 +1,352 @@
+<citation-style xmlns="http://purl.org/net/xbiblio/csl" xmlns:locale="http://www.w3.org/2006/12/csl" version="1.0">
+<info>
+    <title>Russian GOST 7.0.100-2018</title>
+    <id>http://www.zotero.org/styles/gost-r-7-0-100-2018</id>
+    <link href="http://www.zotero.org/styles/gost-r-7-0-100-2018" rel="self"/>
+    <link href="https://example.com/gost-standard-documentation" rel="documentation"/>
+    <author>
+      <name>Danil Kulikov</name>
+      <email>DanilV.Kulikov@outlook.com</email>
+    </author>
+    <category citation-format="numeric" field="generic"/>
+    <updated>2024-08-30</updated>
+    <summary>CSL style based on the Russian GOST 7.0.100-2018 standard for bibliographic references.</summary>
+    <rights license="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</rights>
+</info>
+
+
+<macro name="author">
+  <choose>
+    <!-- Если автор - группа или организация -->
+    <if variable="author" type="group">
+      <choose>
+        <!-- Одна или две организации -->
+        <if match="none" variable="author-count" greater-than="2">
+          <names variable="author">
+            <name form="long" and="text" delimiter=", " initialize-with="."/>
+          </names>
+        </if>
+        <!-- Три и более организации -->
+        <else>
+          <names variable="author">
+            <name form="long" and="text" delimiter=", " initialize-with="."/>
+            <et-al term="et-al" prefix="[" suffix="]" font-style="normal"/>
+          </names>
+        </else>
+      </choose>
+    </if>
+
+    <!-- Случай с одним или несколькими индивидуальными авторами -->
+    <else>
+      <choose>
+        <!-- Случай с одним автором -->
+        <if match="none" variable="author-count" greater-than="1">
+          <names variable="author">
+            <name form="long" and="text" delimiter=", " initialize-with="."/>
+          </names>
+        </if>
+        <!-- Случай с двумя, тремя или четырьмя авторами -->
+        <if match="any" variable="author-count" greater-than="1" less-than="5">
+          <names variable="author">
+            <name form="long" and="text" delimiter=", " initialize-with="." delimiter-precedes-last="always"/>
+          </names>
+        </if>
+        <!-- Случай с пятью и более авторами -->
+        <else>
+          <names variable="author">
+            <name form="long" and="text" delimiter=", " initialize-with="." delimiter-precedes-last="always"/>
+            <et-al term="et-al" prefix="[" suffix="]" font-style="normal"/>
+          </names>
+        </else>
+      </choose>
+    </else>
+  </choose>
+</macro>
+
+<macro name="editor">
+  <choose>
+    <!-- Если один или два редактора -->
+    <if match="none" variable="editor-count" greater-than="2">
+      <names variable="editor">
+        <name form="long" and="text" delimiter=", " initialize-with="."/>
+        <label form="short" prefix=" / " suffix="."/>
+      </names>
+    </if>
+    <!-- Если три и более редактора -->
+    <else>
+      <names variable="editor">
+        <name form="long" and="text" delimiter=", " initialize-with="."/>
+        <et-al term="et-al" prefix="[" suffix="]" font-style="normal"/>
+      </names>
+    </else>
+  </choose>
+</macro>
+
+<macro name="collection-without-main-title">
+  <group delimiter=" ; ">
+    <text variable="title" font-style="italic"/>
+    <names variable="author">
+      <name form="long" and="text" delimiter=", " initialize-with="."/>
+    </names>
+    <group prefix=" – " suffix=".">
+      <text variable="publisher-place"/>
+      <text variable="publisher" prefix=" : " suffix="."/>
+      <text variable="issued" suffix=". "/>
+      <text variable="number-of-pages" prefix="– " suffix=" с."/>
+    </group>
+    <group prefix=" – " suffix=".">
+      <text variable="edition"/>
+      <text variable="volume"/>
+    </group>
+    <group prefix="– ISBN " suffix=".">
+      <text variable="ISBN"/>
+    </group>
+  </group>
+</macro>
+
+<macro name="legal-materials">
+  <group>
+    <text variable="authority" suffix=". "/>
+    <text variable="title" font-style="italic"/>
+    <text variable="title-extra" prefix=": "/>
+    <group prefix=" – " suffix=".">
+      <text variable="publisher-place"/>
+      <text variable="publisher" prefix=" : "/>
+      <text variable="issued"/>
+    </group>
+    <text variable="number-of-pages" prefix=" – " suffix=" с."/>
+    <group prefix="– ISBN " suffix=".">
+      <text variable="ISBN"/>
+    </group>
+  </group>
+</macro>
+
+<macro name="rules">
+  <group>
+    <text variable="title" font-style="italic"/>
+    <group prefix=" : " delimiter=" ; ">
+      <text variable="title-extra"/>
+      <text variable="edition"/>
+    </group>
+    <group prefix=" – " suffix=".">
+      <text variable="publisher-place"/>
+      <text variable="publisher" prefix=" : "/>
+      <text variable="issued"/>
+    </group>
+    <group prefix=" – " suffix=" с.">
+      <text variable="number-of-pages"/>
+    </group>
+    <group prefix="– ISBN " suffix=".">
+      <text variable="ISBN"/>
+    </group>
+  </group>
+</macro>
+
+<macro name="standards">
+  <group>
+    <text variable="title" font-style="italic"/>
+    <group prefix=" = " suffix=".">
+      <text variable="title-secondary"/>
+      <text variable="title-extra" prefix=" : "/>
+    </group>
+    <group prefix=" / " suffix=".">
+      <text variable="author"/>
+    </group>
+    <group prefix=" – " suffix=".">
+      <text variable="publisher-place"/>
+      <text variable="publisher" prefix=" : "/>
+      <text variable="issued"/>
+    </group>
+    <group prefix=" – " suffix=" с.">
+      <text variable="number-of-pages"/>
+    </group>
+  </group>
+</macro>
+
+<macro name="patent">
+  <group>
+    <text variable="title" prefix="Патент № " suffix="."/>
+    <group prefix=" / " suffix=".">
+      <names variable="author">
+        <name form="long" and="text" delimiter=", " initialize-with="."/>
+      </names>
+      <text variable="publisher" prefix="; заявитель " suffix="."/>
+    </group>
+    <text variable="issued" prefix="опубл. "/>
+    <text variable="number-of-pages" prefix=" – " suffix=" с."/>
+  </group>
+</macro>
+
+<macro name="deposited-work">
+  <group>
+    <names variable="author">
+      <name form="long" and="text" delimiter=", " initialize-with="."/>
+    </names>
+    <text variable="title" font-style="italic" suffix=" : "/>
+    <text variable="genre" prefix=": "/>
+    <group prefix=" – " suffix=".">
+      <text variable="publisher-place"/>
+      <text variable="publisher" prefix=" : "/>
+      <text variable="issued"/>
+    </group>
+    <group prefix=" – Деп. в " suffix=".">
+      <text variable="collection-title"/>
+      <text variable="event"/>
+    </group>
+  </group>
+</macro>
+
+<macro name="dissertation">
+  <group>
+    <names variable="author">
+      <name form="long" and="text" delimiter=", " initialize-with="."/>
+    </names>
+    <text variable="title" font-style="italic" suffix=" : "/>
+    <group prefix="специальность " suffix=".">
+      <text variable="genre"/>
+      <text variable="genre-extra" prefix=" «" suffix="»"/>
+    </group>
+    <group prefix=" – " suffix=".">
+      <text variable="publisher-place"/>
+      <text variable="publisher" prefix=" : "/>
+      <text variable="issued"/>
+    </group>
+    <group prefix=" – " suffix=" с.">
+      <text variable="number-of-pages"/>
+    </group>
+  </group>
+</macro>
+
+<macro name="multi-volume-monograph">
+  <group>
+    <names variable="author">
+      <name form="long" and="text" delimiter=", " initialize-with="."/>
+    </names>
+    <text variable="title" font-style="italic"/>
+    <group prefix=" : " suffix=".">
+      <text variable="volume"/>
+      <text variable="title-secondary" prefix=" ; "/>
+    </group>
+    <group prefix=" – " suffix=".">
+      <text variable="publisher-place"/>
+      <text variable="publisher" prefix=" : "/>
+      <text variable="issued"/>
+    </group>
+    <group prefix=" – " suffix=" с.">
+      <text variable="number-of-pages"/>
+    </group>
+    <group prefix="– ISBN " suffix=".">
+      <text variable="ISBN"/>
+    </group>
+  </group>
+</macro>
+
+<macro name="article-from-collection">
+  <group>
+    <names variable="author">
+      <name form="long" and="text" delimiter=", " initialize-with="."/>
+    </names>
+    <text variable="title" suffix=". "/>
+    <group prefix=" // " suffix=".">
+      <text variable="container-title" font-style="italic"/>
+      <names variable="editor" prefix=" / ">
+        <name form="long" and="text" delimiter=", " initialize-with="." delimiter-precedes-last="always"/>
+      </names>
+      <group prefix=" – " suffix=".">
+        <text variable="publisher-place"/>
+        <text variable="publisher" prefix=" : "/>
+        <text variable="issued"/>
+      </group>
+    </group>
+    <text variable="page" prefix=" – С. " suffix=". "/>
+  </group>
+</macro>
+
+<citation>
+  <layout prefix="[" suffix="]" delimiter=",">
+    <!-- Номер цитаты -->
+    <text variable="citation-number"/>
+    <!-- Если указаны страницы, добавляем их после номера цитаты -->
+    <group prefix=" " delimiter=", ">
+      <text term="page" form="short" prefix=" " suffix=" "/>
+      <text variable="locator"/>
+    </group>
+  </layout>
+</citation>
+
+<bibliography>
+  <layout prefix="" suffix=".">
+    <!-- Фамилия и инициалы автора -->
+    <group delimiter=", ">
+      <text macro="author"/>
+    </group>
+    <!-- Название книги (основное и дополнительное название) -->
+    <group delimiter=": ">
+      <text variable="title" font-style="italic"/>
+      <text variable="title-secondary" prefix=": "/>
+    </group>
+    <!-- Ответственность автора -->
+    <group prefix=" / " suffix=".">
+      <text variable="author" prefix=""/>
+      <!-- Сведения об аффилиации автора -->
+      <text variable="author-institution" prefix=" ; "/>
+    </group>
+    <!-- Город издания -->
+    <group delimiter=" : ">
+      <text variable="publisher-place"/>
+      <!-- Название издательства -->
+      <text variable="publisher"/>
+    </group>
+    <!-- Год издания -->
+    <text variable="issued" suffix=". "/>
+    <!-- Общее количество страниц -->
+    <group prefix="– " suffix=" с.">
+      <text variable="number-of-pages"/>
+    </group>
+    <!-- Количество изданных экземпляров -->
+    <group prefix="– " suffix=" экз.">
+      <text variable="number-of-volumes"/>
+    </group>
+    <!-- ISBN -->
+    <group prefix="– ISBN " suffix=".">
+      <text variable="ISBN"/>
+    </group>
+    <!-- Примечания -->
+    <group prefix="– " suffix=".">
+      <text variable="note"/>
+    </group>
+  </layout>
+
+  <layout suffix=".">
+    <choose>
+      <!-- Обработка книги -->
+      <if type="book">
+        <text macro="book"/>
+      </if>
+      <!-- Обработка сборника без заголовка -->
+      <if type="chapter">
+        <text macro="collection-without-main-title"/>
+      </if>
+      <!-- Обработка закона -->
+      <if type="legal_case">
+        <text macro="legal-materials"/>
+      </if>
+      <!-- Добавление макроса для электронного ресурса (сайта) -->
+      <if type="webpage">
+        <text macro="electronic-resource-website"/>
+      </if>
+      <!-- Добавление макроса для электронного документа (части ресурса) -->
+      <if type="article-journal">
+        <text macro="electronic-resource-document"/>
+      </if>
+      <!-- Добавление макроса для статьи (одного автора) -->
+      <if type="article">
+        <text macro="electronic-article"/>
+      </if>
+      <!-- Добавление макросов для других типов электронных источников -->
+      <!-- Другие типы ресурсов -->
+    </choose>
+  </layout>
+</bibliography>
+
+</citation-style>
