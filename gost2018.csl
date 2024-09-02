@@ -1,15 +1,17 @@
-<citation-style xmlns="http://purl.org/net/xbiblio/csl" xmlns:locale="http://www.w3.org/2006/12/csl" version="1.0">
+<style xmlns="http://purl.org/net/xbiblio/csl" xmlns:locale="http://www.w3.org/2006/12/csl" version="1.0">
 <info>
     <title>Russian GOST 7.0.100-2018</title>
-    <id>http://www.zotero.org/styles/gost-r-7-0-100-2018</id>
-    <link href="http://www.zotero.org/styles/gost-r-7-0-100-2018" rel="self"/>
-    <link href="https://example.com/gost-standard-documentation" rel="documentation"/>
+    <id>https://github.com/danzio/gost-2022/</id>
+    <link href="https://github.com/danzio/gost-2022/blob/main/gost2018.csl" rel="self"/>
+    <link href="https://docs.cntd.ru/document/1200063713" rel="documentation"/>
+	<link href="https://docs.cntd.ru/document/1200161674" rel="documentation"/>
+	<link href="https://allgosts.ru/01/140/gost_r_7.0.108-2022" rel="documentation"/>
     <author>
       <name>Danil Kulikov</name>
       <email>DanilV.Kulikov@outlook.com</email>
     </author>
     <category citation-format="numeric" field="generic"/>
-    <updated>2024-08-30</updated>
+    <updated>2024-09-02</updated>
     <summary>CSL style based on the Russian GOST 7.0.100-2018 standard for bibliographic references.</summary>
     <rights license="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</rights>
 </info>
@@ -349,4 +351,4 @@
   </layout>
 </bibliography>
 
-</citation-style>
+</style>
